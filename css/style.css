@@ -331,11 +331,9 @@ button {
 }
 
 .logo {
-  font-family: var(--font-primary);
-  font-size: 32px;
-  font-weight: 700;
-  color: var(--primary-color);
-  letter-spacing: 2px;
+  width:120px;
+  height: 60px;
+  
 }
 
 .nav-menu {
@@ -502,6 +500,7 @@ button {
 .hero-image {
   flex: 1;
   position: relative;
+  margin-right: 30px;
 }
 
 .hero-image img {
