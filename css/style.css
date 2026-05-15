@@ -175,6 +175,10 @@ button {
   color: var(--primary-color);
   letter-spacing: 2px;
 }
+.logo_image {
+  width: 100px;
+  height: 80px;
+}
 
 .nav-menu {
   display: flex;
@@ -331,9 +335,8 @@ button {
 }
 
 .logo {
-  width:120px;
+  width: 120px;
   height: 60px;
-  
 }
 
 .nav-menu {
@@ -559,6 +562,16 @@ button {
 .section-header {
   text-align: center;
   margin-bottom: 60px;
+}
+
+.products-actions {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.products-actions .btn {
+  display: inline-flex;
+  padding: 14px 30px;
 }
 
 .section-subtitle {
@@ -1054,6 +1067,28 @@ button {
     display: none;
   }
 
+  .nav-menu.active {
+    display: block;
+    position: absolute;
+    top: 100%;
+    right: 20px;
+    left: 20px;
+    background: var(--white);
+    border: 1px solid var(--gray);
+    box-shadow: var(--shadow);
+    padding: 20px;
+    border-radius: 8px;
+    z-index: 999;
+  }
+
+  .nav-menu.active li {
+    margin-bottom: 15px;
+  }
+
+  .nav-menu.active li:last-child {
+    margin-bottom: 0;
+  }
+
   .menu-toggle {
     display: flex;
   }
@@ -1089,6 +1124,14 @@ button {
   .about-grid,
   .contact-grid {
     grid-template-columns: 1fr;
+  }
+
+  .product-image {
+    min-height: 260px;
+  }
+
+  .product-info {
+    padding: 20px;
   }
 
   .section-title {
@@ -1128,5 +1171,13 @@ button {
   .services,
   .contact {
     padding: 60px 0;
+  }
+
+  .product-image {
+    min-height: 220px;
+  }
+
+  .product-info {
+    padding: 18px;
   }
 }
