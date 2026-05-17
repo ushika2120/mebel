@@ -146,14 +146,34 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Product card hover effect enhancement
-    const productCards = document.querySelectorAll('.product-card');
-    productCards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            this.style.zIndex = '1';
+    // Product image fullscreen overlay
+    const imageOverlay = document.querySelector('.image-overlay');
+    const overlayImage = imageOverlay ? imageOverlay.querySelector('img') : null;
+    const productImages = document.querySelectorAll('.product-image img');
+
+    productImages.forEach(img => {
+        img.addEventListener('click', function() {
+            if (!imageOverlay || !overlayImage) return;
+            overlayImage.src = this.src;
+            overlayImage.alt = this.alt || 'Product Image';
+            imageOverlay.classList.add('open');
+            document.body.style.overflow = 'hidden';
         });
-        card.addEventListener('mouseleave', function() {
-            this.style.zIndex = '';
+    });
+
+    if (imageOverlay) {
+        imageOverlay.addEventListener('click', function(e) {
+            if (e.target === this || e.target.classList.contains('overlay-close')) {
+                imageOverlay.classList.remove('open');
+                document.body.style.overflow = '';
+            }
         });
+    }
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && imageOverlay && imageOverlay.classList.contains('open')) {
+            imageOverlay.classList.remove('open');
+            document.body.style.overflow = '';
+        }
     });
 });
