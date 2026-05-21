@@ -20,6 +20,10 @@
   --font-primary: "Playfair Display", serif;
   --font-secondary: "Poppins", sans-serif;
 }
+@font-face {
+  font-family: kartuli;
+  src: url(../fonts/bpg_nino_mtavruli_bold.ttf);
+}
 
 /* Reset & Base */
 * {
@@ -450,6 +454,14 @@ button {
 
 .hero-title {
   font-family: var(--font-primary);
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--primary-color);
+  margin-bottom: 25px;
+}
+.hero-title_ka{
+   font-family:kartuli;
   font-size: 64px;
   font-weight: 700;
   line-height: 1.1;
