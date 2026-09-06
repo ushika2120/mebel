@@ -460,8 +460,8 @@ button {
   color: var(--primary-color);
   margin-bottom: 25px;
 }
-.hero-title_ka{
-   font-family:kartuli;
+.hero-title_ka {
+  font-family: kartuli;
   font-size: 64px;
   font-weight: 700;
   line-height: 1.1;
