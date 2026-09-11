@@ -3,6 +3,12 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/config.php';
 
+$sessionDirectory = __DIR__ . '/../data/sessions';
+if (!is_dir($sessionDirectory)) {
+    mkdir($sessionDirectory, 0755, true);
+}
+session_save_path($sessionDirectory);
+
 session_start([
     'cookie_httponly' => true,
     'cookie_samesite' => 'Strict',
