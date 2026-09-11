@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="ka">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Panel - Mobel</title>
+    <link rel="icon" href="./photo/141.png" sizes="512x512" type="image/png" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/admin.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body class="admin-body">
+    <div class="admin-shell">
+      <header class="admin-topbar">
+        <div class="admin-topbar-inner">
+          <a class="admin-brand" href="products-ka.html">
+            <img src="./photo/141.png" alt="Mobel" />
+            <span>Mobel Admin</span>
+          </a>
+          <div class="admin-actions">
+            <span class="admin-status" data-status>სერვერთან დაკავშირება...</span>
+            <a class="admin-button secondary" href="products-ka.html">
+              <i class="fas fa-eye"></i>
+              ნახვა
+            </a>
+            <button class="admin-button secondary" type="button" data-export>
+              <i class="fas fa-download"></i>
+              Export
+            </button>
+            <label class="admin-button secondary admin-file-button">
+              <i class="fas fa-upload"></i>
+              Import
+              <input type="file" accept="application/json" data-import />
+            </label>
+            <button class="admin-button danger" type="button" data-reset>
+              <i class="fas fa-rotate-left"></i>
+              Reset
+            </button>
+            <button class="admin-button secondary" type="button" data-logout hidden>
+              <i class="fas fa-right-from-bracket"></i>
+              Logout
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <main class="admin-login" data-login-panel hidden>
+        <section class="admin-panel">
+          <div class="admin-panel-header">
+            <h1>Admin Login</h1>
+            <p>შეიყვანეთ მომხმარებელი და პაროლი.</p>
+          </div>
+          <form class="admin-form" data-login-form>
+            <div class="admin-field">
+              <label for="username">მომხმარებელი</label>
+              <input id="username" name="username" type="text" autocomplete="username" required />
+            </div>
+            <div class="admin-field">
+              <label for="password">პაროლი</label>
+              <input id="password" name="password" type="password" autocomplete="current-password" required />
+            </div>
+            <button class="admin-button" type="submit">
+              შესვლა
+            </button>
+          </form>
+        </section>
+      </main>
+
+      <main class="admin-main" data-admin-panel hidden>
+        <section class="admin-panel">
+          <div class="admin-panel-header">
+            <h1>პროდუქტის მართვა</h1>
+            <p>დაამატეთ ან შეცვალეთ კატალოგის პროდუქტი.</p>
+          </div>
+          <form class="admin-form" data-product-form>
+            <div class="admin-field">
+              <label for="category">კატეგორია</label>
+              <select id="category" name="category" required></select>
+            </div>
+            <div class="admin-field">
+              <label for="nameKa">ქართული სახელი</label>
+              <input id="nameKa" name="nameKa" type="text" required />
+            </div>
+            <div class="admin-field">
+              <label for="nameEn">ინგლისური სახელი</label>
+              <input id="nameEn" name="nameEn" type="text" />
+            </div>
+            <div class="admin-field">
+              <label for="price">ფასი</label>
+              <input id="price" name="price" type="text" placeholder="₾00,0" />
+            </div>
+            <div class="admin-field">
+              <label for="image">ფოტოს მისამართი</label>
+              <input id="image" name="image" type="text" placeholder="./photo/example.jpg" required />
+            </div>
+            <div class="admin-field">
+              <label for="imageUpload">ფოტოს ატვირთვა</label>
+              <input id="imageUpload" name="imageUpload" type="file" accept="image/png,image/jpeg,image/webp,image/gif" data-image-upload />
+            </div>
+            <button class="admin-button" type="submit" data-save-button>
+              პროდუქტის დამატება
+            </button>
+            <button class="admin-button secondary" type="button" data-cancel-edit hidden>
+              გაუქმება
+            </button>
+          </form>
+        </section>
+
+        <section class="admin-panel">
+          <div class="admin-panel-header">
+            <h2>კატალოგი</h2>
+            <p>ყველა პროდუქტი, რომელიც პროდუქტების გვერდზე გამოჩნდება.</p>
+          </div>
+          <div class="admin-list" data-products-list></div>
+          <p class="admin-empty" data-empty-state hidden>პროდუქტები ჯერ არ არის დამატებული.</p>
+        </section>
+      </main>
+    </div>
+
+    <script src="js/catalog-store.js"></script>
+    <script src="js/admin.js"></script>
+  </body>
+</html>
