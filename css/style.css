@@ -213,6 +213,15 @@ button {
   width: 100%;
 }
 
+html[lang="ka"] .nav-menu {
+  gap: 30px;
+}
+
+html[lang="ka"] .nav-link {
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
 .nav-icons {
   display: flex;
   align-items: center;
@@ -352,6 +361,7 @@ button {
   font-size: 14px;
   font-weight: 500;
   color: var(--primary-color);
+  font-family: kartuli;
   text-transform: uppercase;
   letter-spacing: 1px;
   position: relative;
@@ -474,6 +484,7 @@ button {
   color: var(--text-light);
   margin-bottom: 40px;
   max-width: 500px;
+  
 }
 
 .hero-buttons {
