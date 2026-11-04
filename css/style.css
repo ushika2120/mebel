@@ -1607,6 +1607,10 @@ html[lang="ka"] .nav-icons .lang-dropdown .lang-option {
   color: #18251f;
 }
 
+.btn.btn-primary {
+  border-radius: 14px;
+}
+
 .btn-primary:hover {
   background: #d2ad84;
   color: #18251f;
