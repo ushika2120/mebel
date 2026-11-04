@@ -1,70 +1,63 @@
 // Mobel - Main JavaScript
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Header scroll functionality
-    const header = document.querySelector('.header');
-    const headerTop = document.querySelector('.header-top');
-    let lastScroll = 0;
-    
-    window.addEventListener('scroll', function() {
-        const currentScroll = window.pageYOffset;
-        
-        // Hide header on scroll down, show on scroll up
-        if (currentScroll > lastScroll && currentScroll > 100) {
-            header.classList.add('hidden');
-        } else {
-            header.classList.remove('hidden');
-        }
-        
-        // Hide header-top on scroll
-        if (currentScroll > 100) {
-            headerTop.classList.add('hidden');
-        } else {
-            headerTop.classList.remove('hidden');
-        }
-        
-        lastScroll = currentScroll;
-    });
-
     // Mobile menu toggle
     const menuToggle = document.querySelector('.menu-toggle');
     const navMenu = document.querySelector('.nav-menu');
+    const menuLabels = document.documentElement.lang === 'ka'
+        ? { open: 'ნავიგაციის მენიუს გახსნა', close: 'ნავიგაციის მენიუს დახურვა' }
+        : { open: 'Open navigation menu', close: 'Close navigation menu' };
+
+    function closeNavigation() {
+        if (!menuToggle || !navMenu) return;
+        menuToggle.classList.remove('active');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.setAttribute('aria-label', menuLabels.open);
+        navMenu.classList.remove('active');
+    }
     
-    if (menuToggle) {
+    if (menuToggle && navMenu) {
         menuToggle.addEventListener('click', function() {
-            menuToggle.classList.toggle('active');
-            navMenu.classList.toggle('active');
+            const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+            menuToggle.classList.toggle('active', !isExpanded);
+            navMenu.classList.toggle('active', !isExpanded);
+            menuToggle.setAttribute('aria-expanded', String(!isExpanded));
+            menuToggle.setAttribute('aria-label', isExpanded ? menuLabels.open : menuLabels.close);
         });
     }
 
     // Language switcher toggle
     const langSwitcher = document.querySelector('.lang-switcher');
     if (langSwitcher) {
+        const langButton = langSwitcher.querySelector('.lang-btn');
         langSwitcher.addEventListener('click', function(e) {
             e.stopPropagation();
-            this.classList.toggle('active');
+            const isExpanded = langButton.getAttribute('aria-expanded') === 'true';
+            this.classList.toggle('active', !isExpanded);
+            langButton.setAttribute('aria-expanded', String(!isExpanded));
         });
         
         // Close on outside click
         document.addEventListener('click', function() {
             langSwitcher.classList.remove('active');
+            langButton.setAttribute('aria-expanded', 'false');
         });
     }
 
     // Smooth scroll for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
+            if (this.getAttribute('href') === '#') return;
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
                 target.scrollIntoView({
-                    behavior: 'smooth'
+                    behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches
+                        ? 'auto'
+                        : 'smooth'
                 });
                 // Close mobile menu if open
-                if (navMenu.classList.contains('active')) {
-                    navMenu.classList.remove('active');
-                    menuToggle.classList.remove('active');
-                }
+                closeNavigation();
             }
         });
     });
@@ -149,31 +142,74 @@ document.addEventListener('DOMContentLoaded', function() {
     // Product image fullscreen overlay
     const imageOverlay = document.querySelector('.image-overlay');
     const overlayImage = imageOverlay ? imageOverlay.querySelector('img') : null;
+    const overlayClose = imageOverlay ? imageOverlay.querySelector('.overlay-close') : null;
     const productImages = document.querySelectorAll('.product-image img');
+    const zoomLabel = document.documentElement.lang === 'ka'
+        ? 'სურათის გადიდება: '
+        : 'View larger image: ';
+    let lastFocusedImage = null;
+
+    function closeImageOverlay() {
+        if (!imageOverlay || !overlayImage) return;
+        imageOverlay.classList.remove('open');
+        imageOverlay.setAttribute('aria-hidden', 'true');
+        overlayImage.removeAttribute('src');
+        document.body.style.overflow = '';
+        if (lastFocusedImage) lastFocusedImage.focus();
+    }
 
     productImages.forEach(img => {
-        img.addEventListener('click', function() {
+        img.setAttribute('tabindex', '0');
+        img.setAttribute('role', 'button');
+        img.setAttribute('aria-label', `${zoomLabel}${img.alt}`);
+
+        function openImage() {
             if (!imageOverlay || !overlayImage) return;
-            overlayImage.src = this.src;
-            overlayImage.alt = this.alt || 'Product Image';
+            lastFocusedImage = img;
+            overlayImage.src = img.currentSrc || img.src;
+            overlayImage.alt = img.alt;
+            imageOverlay.setAttribute('aria-hidden', 'false');
             imageOverlay.classList.add('open');
             document.body.style.overflow = 'hidden';
+            if (overlayClose) overlayClose.focus();
+        }
+
+        img.addEventListener('click', function() {
+            openImage();
+        });
+
+        img.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                openImage();
+            }
         });
     });
 
     if (imageOverlay) {
         imageOverlay.addEventListener('click', function(e) {
             if (e.target === this || e.target.classList.contains('overlay-close')) {
-                imageOverlay.classList.remove('open');
-                document.body.style.overflow = '';
+                closeImageOverlay();
             }
         });
     }
 
     document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && imageOverlay && imageOverlay.classList.contains('open')) {
-            imageOverlay.classList.remove('open');
-            document.body.style.overflow = '';
+        if (e.key === 'Tab' && imageOverlay && imageOverlay.classList.contains('open')) {
+            e.preventDefault();
+            if (overlayClose) overlayClose.focus();
+            return;
+        }
+
+        if (e.key === 'Escape') {
+            if (imageOverlay && imageOverlay.classList.contains('open')) {
+                closeImageOverlay();
+            }
+            if (langSwitcher) {
+                langSwitcher.classList.remove('active');
+                langSwitcher.querySelector('.lang-btn').setAttribute('aria-expanded', 'false');
+            }
+            closeNavigation();
         }
     });
 });

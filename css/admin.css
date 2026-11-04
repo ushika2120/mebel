@@ -22,6 +22,9 @@ body.admin-body {
 }
 
 .admin-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   background: var(--admin-panel);
   border-bottom: 1px solid var(--admin-line);
 }
@@ -288,5 +291,279 @@ body.admin-body {
   .admin-product-actions {
     grid-column: 1 / -1;
     justify-content: flex-end;
+  }
+}
+
+body.admin-body {
+  background:
+    radial-gradient(ellipse at 10% 0%, rgba(189, 146, 98, 0.12), transparent 34rem),
+    #f5f3ed;
+  color: #2b332f;
+  font-family: var(--font-secondary);
+}
+
+.admin-main[hidden],
+.admin-login[hidden] {
+  display: none;
+}
+
+html[lang="ka"] body.admin-body,
+html[lang="ka"] .admin-body button,
+html[lang="ka"] .admin-body input,
+html[lang="ka"] .admin-body select {
+  font-family: "Noto Sans Georgian", sans-serif;
+}
+
+.admin-topbar {
+  background: rgba(255, 254, 250, 0.94);
+  border-bottom-color: #e8e4da;
+  box-shadow: 0 6px 24px rgba(32, 52, 46, 0.05);
+  backdrop-filter: blur(16px);
+}
+
+.admin-topbar-inner {
+  min-height: 84px;
+  gap: 24px;
+}
+
+.admin-brand {
+  gap: 12px;
+  color: #20342e;
+  font-size: 15px;
+  letter-spacing: 0.2px;
+}
+
+.admin-brand img {
+  width: 58px;
+  height: 58px;
+}
+
+.admin-actions {
+  gap: 9px;
+}
+
+.admin-status {
+  color: #717a74;
+  font-size: 12px;
+}
+
+.admin-main,
+.admin-login {
+  width: min(1240px, calc(100% - 48px));
+  margin: 42px auto;
+}
+
+.admin-main {
+  grid-template-columns: minmax(290px, 370px) minmax(0, 1fr);
+  gap: 24px;
+}
+
+.admin-panel {
+  overflow: hidden;
+  border: 1px solid #e8e4da;
+  border-radius: 20px;
+  background: #fffefa;
+  box-shadow: 0 18px 48px rgba(32, 52, 46, 0.08);
+}
+
+.admin-panel-header {
+  padding: 26px 28px 20px;
+  border-bottom-color: #eeece5;
+}
+
+.admin-panel-header h1,
+.admin-panel-header h2 {
+  color: #20342e;
+  font-family: var(--font-primary);
+  font-size: 26px;
+  font-weight: 400;
+}
+
+html[lang="ka"] .admin-panel-header h1,
+html[lang="ka"] .admin-panel-header h2 {
+  font-family: "Noto Sans Georgian", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.admin-panel-header p {
+  color: #717a74;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.admin-form {
+  gap: 17px;
+  padding: 26px 28px 30px;
+}
+
+.admin-field {
+  gap: 8px;
+}
+
+.admin-field label {
+  color: #535f57;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.admin-field input,
+.admin-field select {
+  min-height: 48px;
+  border-color: #e5e2da;
+  border-radius: 12px;
+  padding: 11px 14px;
+  background: #fbfaf7;
+  font-size: 14px;
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    background 180ms ease;
+}
+
+.admin-field input:focus,
+.admin-field select:focus {
+  border-color: #bd9262;
+  background: #fffefa;
+  box-shadow: 0 0 0 4px rgba(189, 146, 98, 0.14);
+  outline: none;
+}
+
+.admin-button {
+  min-height: 46px;
+  border-radius: 999px;
+  padding: 0 18px;
+  background: #20342e;
+  font-size: 12px;
+  font-weight: 700;
+  transition:
+    transform 180ms ease,
+    background 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.admin-button:hover {
+  transform: translateY(-1px);
+  background: #30483e;
+  box-shadow: 0 8px 18px rgba(32, 52, 46, 0.14);
+}
+
+.admin-button.secondary {
+  background: #eee9df;
+  color: #35433b;
+}
+
+.admin-button.secondary:hover {
+  background: #e4dccf;
+}
+
+.admin-button.danger {
+  background: #a44e3f;
+}
+
+.admin-button.danger:hover {
+  background: #883d32;
+}
+
+.admin-list {
+  gap: 12px;
+  padding: 16px;
+}
+
+.admin-product {
+  gap: 16px;
+  padding: 14px;
+  border-color: #ece9e1;
+  border-radius: 15px;
+  background: #fffefa;
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.admin-product:hover {
+  border-color: #d8cbb8;
+  box-shadow: 0 8px 22px rgba(32, 52, 46, 0.07);
+}
+
+.admin-product img {
+  width: 84px;
+  border-radius: 12px;
+}
+
+.admin-product h3 {
+  color: #20342e;
+  font-size: 14px;
+}
+
+.admin-product p,
+.admin-product small {
+  color: #717a74;
+  font-size: 12px;
+}
+
+.admin-product-actions {
+  gap: 7px;
+}
+
+.admin-icon-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #eee9df;
+}
+
+.admin-icon-button.danger {
+  background: #f5e5e1;
+  color: #a44e3f;
+}
+
+.admin-empty {
+  color: #717a74;
+}
+
+@media (max-width: 860px) {
+  .admin-topbar-inner {
+    gap: 14px;
+  }
+
+  .admin-main,
+  .admin-login {
+    width: min(100% - 32px, 680px);
+    margin: 26px auto;
+  }
+
+  .admin-topbar-inner {
+    padding: 16px 0;
+  }
+
+  .admin-actions .admin-button {
+    flex: 1 1 132px;
+  }
+}
+
+@media (max-width: 560px) {
+  .admin-topbar-inner {
+    width: calc(100% - 28px);
+  }
+
+  .admin-brand {
+    justify-content: center;
+  }
+
+  .admin-actions {
+    gap: 8px;
+  }
+
+  .admin-actions .admin-button {
+    flex: 1 1 calc(50% - 8px);
+  }
+
+  .admin-product {
+    gap: 12px;
+  }
+
+  .admin-product img {
+    width: 72px;
   }
 }

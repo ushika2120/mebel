@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&family=Noto+Sans+Georgian:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
@@ -53,7 +53,6 @@
               ><img src="./photo/141.png" alt="mebel"
             /></a>
             <ul class="nav-menu">
-              <li><a href="index.html" class="nav-link">Home</a></li>
               <li><a href="#living-room" class="nav-link">Living Room</a></li>
               <li><a href="#bedroom" class="nav-link">Bedroom</a></li>
               <li><a href="#dining-room" class="nav-link">Dining Room</a></li>
@@ -62,11 +61,15 @@
             </ul>
             <div class="nav-icons">
               <div class="lang-switcher">
-                <button class="lang-btn">
+                <button
+                  class="lang-btn"
+                  aria-expanded="false"
+                  aria-controls="language-menu"
+                >
                   <span class="current-lang">EN</span>
                   <i class="fas fa-chevron-down"></i>
                 </button>
-                <div class="lang-dropdown">
+                <div class="lang-dropdown" id="language-menu">
                   <a href="index.html" class="lang-option active">English</a>
                   <a href="index-ka.html" class="lang-option">ქართული</a>
                 </div>
@@ -87,7 +90,7 @@
       </div>
     </header>
 
-    <section id="home" class="hero">
+    <section id="home" class="hero catalog-hero">
       <div class="hero-content">
         <span class="hero-subtitle">All Products</span>
         <h1 class="hero-title">Explore Our Full Collection</h1>

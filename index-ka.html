@@ -4,17 +4,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mebel - ავეჯი ევროპიდან</title>
+    <meta
+      name="description"
+      content="აღმოაჩინეთ ბელგიური და ევროპული ავეჯი თქვენი სახლისთვის. დაათვალიერეთ Mebel-ის დივნების, სკამების, საძინებლის ავეჯისა და სხვა ნივთების კოლექცია."
+    />
     <link
       rel="icon"
       href="./photo/141.png"
       sizes="512x512"
       type="image/png"
     />
-    <link rel="stylesheet" href="css/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+    <link rel="preload" as="image" href="./photo/03.jpg" fetchpriority="high" />
+    <link rel="stylesheet" href="css/style.css" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&family=Noto+Sans+Georgian:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
@@ -31,13 +37,18 @@
             <div class="header-social">
               <a
                 href="https://www.facebook.com/profile.php?id=61582707971307&locale=mk_MK"
-                ><i class="fab fa-facebook-f"></i
+                aria-label="Mebel ფეისბუქზე"
+                ><i class="fab fa-facebook-f" aria-hidden="true"></i
               ></a>
-              <a href="https://www.instagram.com/mebel__avejibelgiidan/"
-                ><i class="fab fa-instagram"></i
+              <a
+                href="https://www.instagram.com/mebel__avejibelgiidan/"
+                aria-label="Mebel ინსტაგრამზე"
+                ><i class="fab fa-instagram" aria-hidden="true"></i
               ></a>
-              <a href="https://www.pinterest.com/mebel__avejibelgiidan/"
-                ><i class="fab fa-pinterest-p"></i
+              <a
+                href="https://www.pinterest.com/mebel__avejibelgiidan/"
+                aria-label="Mebel Pinterest-ზე"
+                ><i class="fab fa-pinterest-p" aria-hidden="true"></i
               ></a>
             </div>
             <div class="header-contact">
@@ -59,10 +70,14 @@
         <div class="container">
           <nav class="navbar">
             <a href="index-ka.html" class="logo"
-              ><img src="./photo/141.png" alt="mebel" class="logo_image"
+              ><img
+                src="./photo/141.png"
+                alt="Mebel — მთავარ გვერდზე"
+                class="logo_image"
+                width="512"
+                height="512"
             /></a>
-            <ul class="nav-menu">
-              <li><a href="#home" class="nav-link">ᲛᲗᲐᲕᲐᲠᲘ</a></li>
+            <ul class="nav-menu" id="primary-navigation">
               <li><a href="#about" class="nav-link">ᲩᲕᲔᲜ ᲨᲔᲡᲐᲮᲔᲑ</a></li>
               <li><a href="#products" class="nav-link">ᲙᲐᲢᲐᲚᲝᲒᲘ</a></li>
               <li><a href="#services" class="nav-link">ᲛᲝᲛᲡᲐᲮᲣᲠᲔᲑᲐ</a></li>
@@ -70,24 +85,43 @@
             </ul>
             <div class="nav-icons">
               <div class="lang-switcher">
-                <button class="lang-btn">
+                <button
+                  class="lang-btn"
+                  aria-expanded="false"
+                  aria-controls="language-menu"
+                >
                   <span class="current-lang">KA</span>
-                  <i class="fas fa-chevron-down"></i>
+                  <i class="fas fa-chevron-down" aria-hidden="true"></i>
                 </button>
-                <div class="lang-dropdown">
+                <div class="lang-dropdown" id="language-menu">
                   <a href="index.html" class="lang-option">English</a>
                   <a href="index-ka.html" class="lang-option active">ქართული</a>
                 </div>
               </div>
-              <a href="#" class="search-btn"><i class="fas fa-search"></i></a>
-              <a href="#" class="cart-btn"
-                ><i class="fas fa-shopping-cart"></i
-                ><span class="cart-count">0</span></a
+              <button
+                type="button"
+                class="search-btn"
+                aria-label="ძიება (მალე)"
               >
-              <button class="menu-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
+                <i class="fas fa-search" aria-hidden="true"></i>
+              </button>
+              <button
+                type="button"
+                class="cart-btn"
+                aria-label="საყიდლების კალათა"
+              >
+                <i class="fas fa-shopping-cart" aria-hidden="true"></i>
+                <span class="cart-count" aria-live="polite">0</span>
+              </button>
+              <button
+                class="menu-toggle"
+                aria-label="ნავიგაციის მენიუს გახსნა"
+                aria-expanded="false"
+                aria-controls="primary-navigation"
+              >
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
               </button>
             </div>
           </nav>
@@ -152,7 +186,14 @@
         <div class="products-grid">
           <div class="product-card">
             <div class="product-image">
-              <img src="./photo/2.jpg" alt="თანამედროვე სკამი" />
+              <img
+                src="./photo/2.jpg"
+                alt="თანამედროვე სკამი"
+                width="900"
+                height="1121"
+                loading="lazy"
+                decoding="async"
+              />
               <span class="product-tag">ახალი</span>
             </div>
             <div class="product-info">
@@ -167,7 +208,14 @@
           </div>
           <div class="product-card">
             <div class="product-image">
-              <img src="./photo/10.jpg" alt="ველვეტის დივანი" />
+              <img
+                src="./photo/10.jpg"
+                alt="ველვეტის დივანი"
+                width="1206"
+                height="694"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
             <div class="product-info">
               <h3>ტყავის დივანი</h3>
@@ -180,7 +228,14 @@
           </div>
           <div class="product-card">
             <div class="product-image">
-              <img src="./photo/4.jpg" alt="მაგიდის ლამპა" />
+              <img
+                src="./photo/4.jpg"
+                alt="დივანი"
+                width="2000"
+                height="1455"
+                loading="lazy"
+                decoding="async"
+              />
               <span class="product-tag sale">ყველაზე გაყიდვადი</span>
             </div>
             <div class="product-info">
@@ -195,7 +250,14 @@
           </div>
           <div class="product-card">
             <div class="product-image">
-              <img src="./photo/diningroom 4.jpg" alt="სასადილო სკამი" />
+              <img
+                src="./photo/diningroom 4.jpg"
+                alt="სასადილო სკამი"
+                width="2048"
+                height="1536"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
             <div class="product-info">
               <h3>სასადილო სკამი</h3>
@@ -208,7 +270,14 @@
           </div>
           <div class="product-card">
             <div class="product-image">
-              <img src="./photo/5.jpg" alt="ყავის მაგიდა" />
+              <img
+                src="./photo/5.jpg"
+                alt="ყავის მაგიდა"
+                width="2048"
+                height="2048"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
             <div class="product-info">
               <h3>ყავის მაგიდა</h3>
@@ -221,7 +290,14 @@
           </div>
           <div class="product-card">
             <div class="product-image">
-              <img src="./photo/badroom 1.jpg" alt="თანამედროვე საწოლი" />
+              <img
+                src="./photo/badroom 1.jpg"
+                alt="თანამედროვე საწოლი"
+                width="1536"
+                height="1024"
+                loading="lazy"
+                decoding="async"
+              />
               <span class="product-tag">პოპულარული</span>
             </div>
             <div class="product-info">
@@ -245,6 +321,10 @@
             <img
               src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=600&q=80"
               alt="ფურნიტურის სალონი"
+              width="600"
+              height="316"
+              loading="lazy"
+              decoding="async"
             />
           </div>
           <div class="about-content">
@@ -316,8 +396,10 @@
             </p>
             <div class="contact-details">
               <div class="contact-item">
-                <a href="https://maps.app.goo.gl/x9Q4gSbMCxdSAaRn8"
-                  ><i class="fas fa-map-marker-alt"></i
+                <a
+                  href="https://maps.app.goo.gl/x9Q4gSbMCxdSAaRn8"
+                  aria-label="წითელი სოფელი, ნატახტარი, მცხეთა — Google Maps"
+                  ><i class="fas fa-map-marker-alt" aria-hidden="true"></i
                 ></a>
                 <div>
                   <h4>მისამართი</h4>
@@ -344,17 +426,28 @@
           <div class="contact-form">
             <form>
               <div class="form-group">
-                <input type="text" placeholder="თქვენი სახელი" required />
+                <input
+                  type="text"
+                  placeholder="თქვენი სახელი"
+                  aria-label="თქვენი სახელი"
+                  required
+                />
               </div>
               <div class="form-group">
-                <input type="email" placeholder="თქვენი ელ. ფოსტა" required />
+                <input
+                  type="email"
+                  placeholder="თქვენი ელ. ფოსტა"
+                  aria-label="თქვენი ელ. ფოსტა"
+                  required
+                />
               </div>
               <div class="form-group">
-                <input type="text" placeholder="თემა" />
+                <input type="text" placeholder="თემა" aria-label="თემა" />
               </div>
               <div class="form-group">
                 <textarea
                   placeholder="თქვენი შეტყობინება"
+                  aria-label="თქვენი შეტყობინება"
                   rows="5"
                   required
                 ></textarea>
@@ -371,20 +464,32 @@
       <div class="container">
         <div class="footer-grid">
           <div class="footer-brand">
-            <a href="#" class="logo"
-              ><img src="./photo/143.png" alt="logo"
+            <a href="index-ka.html" class="logo"
+              ><img
+                src="./photo/143.png"
+                alt="Mebel — მთავარ გვერდზე"
+                width="512"
+                height="205"
+                loading="lazy"
+                decoding="async"
             /></a>
             <p>ლამაზი სივრცეების შექმნა უნიკალური ავეჯით 2010 წლიდან.</p>
             <div class="social-links">
               <a
                 href="https://www.facebook.com/profile.php?id=61582707971307&locale=mk_MK"
-                ><i class="fab fa-facebook-f"></i
+                aria-label="Mebel ფეისბუქზე"
+                ><i class="fab fa-facebook-f" aria-hidden="true"></i
               ></a>
-              <a href="https://www.instagram.com/mebel__avejibelgiidan/"
-                ><i class="fab fa-instagram"></i
+              <a
+                href="https://www.instagram.com/mebel__avejibelgiidan/"
+                aria-label="Mebel ინსტაგრამზე"
+                ><i class="fab fa-instagram" aria-hidden="true"></i
               ></a>
-              <a href="#"><i class="fab fa-pinterest"></i></a>
-              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a
+                href="https://www.pinterest.com/mebel__avejibelgiidan/"
+                aria-label="Mebel Pinterest-ზე"
+                ><i class="fab fa-pinterest" aria-hidden="true"></i
+              ></a>
             </div>
           </div>
           <div class="footer-links">
@@ -399,18 +504,24 @@
           <div class="footer-links">
             <h4>პროდუქტები</h4>
             <ul>
-              <li><a href="#">საცხოვრებელი</a></li>
-              <li><a href="#">საძინებელი</a></li>
-              <li><a href="#">სასადილო</a></li>
-              <li><a href="#">ოფისი</a></li>
+              <li><a href="products-ka.html">საცხოვრებელი</a></li>
+              <li><a href="products-ka.html">საძინებელი</a></li>
+              <li><a href="products-ka.html">სასადილო</a></li>
+              <li><a href="products-ka.html">ოფისი</a></li>
             </ul>
           </div>
           <div class="footer-links">
             <h4>სიახლეები</h4>
             <p>გამოიწერეთ განახლებები და ექსკლუზიური შეთავაზებები.</p>
             <form class="newsletter-form">
-              <input type="email" placeholder="თქვენი ელ. ფოსტა" />
-              <button type="submit"><i class="fas fa-paper-plane"></i></button>
+              <input
+                type="email"
+                placeholder="თქვენი ელ. ფოსტა"
+                aria-label="თქვენი ელ. ფოსტა სიახლეების გამოსაწერად"
+              />
+              <button type="submit" aria-label="სიახლეების გამოწერა">
+                <i class="fas fa-paper-plane" aria-hidden="true"></i>
+              </button>
             </form>
           </div>
         </div>
@@ -420,10 +531,19 @@
       </div>
     </footer>
 
-    <div class="image-overlay" aria-hidden="true">
+    <div
+      class="image-overlay"
+      role="dialog"
+      aria-label="პროდუქტის სურათი"
+      aria-modal="true"
+      aria-hidden="true"
+      tabindex="-1"
+    >
       <div class="image-overlay-content">
-        <button class="overlay-close" aria-label="Close image">&times;</button>
-        <img src="" alt="Full screen product image" />
+        <button class="overlay-close" type="button" aria-label="სურათის დახურვა">
+          &times;
+        </button>
+        <img alt="" />
       </div>
     </div>
 
