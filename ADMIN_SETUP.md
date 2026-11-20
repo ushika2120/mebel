@@ -6,14 +6,13 @@ Admin Panel URL:
 https://mebel.com.ge/admin.html
 ```
 
-Default login is set in `api/config.php`:
+The default username and password hash are set in `api/config.php`. The password
+is stored as a PBKDF2-SHA256 hash, not as plain text.
 
-```php
-define('ADMIN_USERNAME', getenv('MEBEL_ADMIN_USER') ?: 'admin');
-define('ADMIN_PASSWORD', getenv('MEBEL_ADMIN_PASSWORD') ?: 'change-this-password');
-```
-
-Before uploading to production, change `change-this-password` to a strong password.
+You can override the username with `MEBEL_ADMIN_USER` and provide a password hash
+in `32-character-hex-salt:64-character-hex-hash` format with
+`MEBEL_ADMIN_PASSWORD_HASH`. The legacy
+`MEBEL_ADMIN_PASSWORD` plain-text environment override is also supported.
 
 The backend stores products in:
 
